@@ -1,0 +1,69 @@
+---
+title: 'Final Project: U.S. Higher Education Data'
+author: "Marion Milloy, Drew Wagner, Harrington McDowelle, and Aparna Sankar"
+output:
+  html_document:
+    toc: yes
+  pdf_document:
+    toc: yes
+---
+
+# R Configuration
+
+
+Below is a description of our R environment.
+
+```{r}
+sessionInfo()
+```
+
+# Accessing Our "Dirty" Data From data.world
+
+
+The "dirty" version of our data can be accessed from data.world using the following R script.
+
+```{r}
+source("../01_Data/data.world.R")
+summary(df)
+```
+
+# Cleaning Up Our Data
+
+
+To make our data easier to understand and work with, we created the following ETL (extract-translate-load) script to edit our CSV file containing higher education institution data using the steps below. 
+
+1. After cloning our repo, we set our working directory to the "00_Doc" folder.
+
+2. We then downloaded and saved our dataset from data.world to the "01_Data" folder. We renamed the file to "PreETL_merged_university_data", and created a file path leading to this file so that it could be read into RStudio as a data frame. (See the next section for instructions on how to download data files from data.world)
+
+3. We looked through the data set and determined that the column names needed to be more descriptive. So we looked up what each of the variable names represented and renamed the variables so that they would be more descriptive. We did this by using the rename function from the plyr package. 
+
+4. For consistency, we decided to alter the zip codes so that all zip codes would only contain 5 digits. We did this by using the substring function.
+
+5. Lastly, we changed all of the "NULL" values to read "NA in order to be more user friendly. This was accomplished by using the lapply and gsub functions. 
+
+6. We saved a copy of our "clean" CSV file by removing "PreETL_" from its name, and uploaded our clean dataset back to data.world.
+
+The code used to accomplish these steps can be found in detail in the following R script. Below is a sample of our "clean" CSV file.
+
+```{r}
+source("../01_Data/ETL.Final.R")
+summary(df)
+```
+
+# Downloading Our "Clean" Data from data.world
+
+
+Once we cleaned up our data, we uploaded a new copy of it to data.world. To import this csv file for use in Tableau:
+
+1. On the Tableau homescreen, under "To a Server" click "Web Data Connector" on the left-hand Connect menu. 
+
+2. For the URL, type "https://tableau.data.world" and press Enter. 
+
+3. For the Dataset, type "mamilloy/s-17-dv-project-6". 
+
+4. Copy your personal data.world API Token into the next field and click "Get Dataset".
+
+5. All csv files in the above dataset will appear on the left-hand side of the screen to be used. 
+
+
