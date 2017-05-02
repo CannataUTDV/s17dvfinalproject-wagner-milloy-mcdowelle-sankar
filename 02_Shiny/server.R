@@ -10,6 +10,8 @@ require(leaflet)
 require(plotly)
 require(lubridate)
 
+df7 <- read.csv("https://query.data.world/s/9h7clhat19z6qpe4mor0ndtpl",header=T);
+
 shinyServer(function(input, output) {
 
   ### Begin crosstab ###
@@ -152,27 +154,25 @@ shinyServer(function(input, output) {
   
   ### Begin scatterplot 2 ###
   
-  df7 <- read.csv("https://query.data.world/s/9h7clhat19z6qpe4mor0ndtpl",header=T);
-  
   output$plot1 <- renderPlot({
-      ggplot(df7, aes(x=State, y=Avg_SAT_Score, color=State)) + geom_point(size=4, alpha=0.7, position=position_jitter(w=0.1, h=0)) + 
-        labs(title = "Average College SAT Scores per State", y = "SAT Scores") +
-        stat_summary(fun.y=mean, geom="point", shape=23, color="black", size=4) +         
-        geom_point(size=3, alpha=0.7, position=position_jitter(w=0.1, h=0)) +
-        stat_summary(fun.y=mean, geom="point", shape=23, color="black", size=4) +         
-        stat_summary(fun.ymin=function(x)(mean(x)-sd(x)), 
-                     fun.ymax=function(x)(mean(x)+sd(x)),
-                     geom="errorbar", width=0.1) +
-        theme_bw()
-    })
-    
-    output$plot2 <- renderPlot({
-      brush = brushOpts(id="plot_brush", delayType = "throttle", delay = 30)
-      bdf=brushedPoints(df7, input$plot_brush)
-      if( !is.null(input$plot_brush) ) {
-        bdf  %>% ggplot() + geom_point(aes(x=State, y=Avg_SAT_Score, color=State, size=4)) + guides(size=FALSE) +
-          labs(title = "Selected Average College SAT Scores", y = "SAT Scores", x = "State")
-      } 
-    })
+    ggplot(df7, aes(x=State, y=Avg_SAT_Score, color=State)) + geom_point(size=4, alpha=0.7, position=position_jitter(w=0.1, h=0)) + 
+      labs(title = "Average College SAT Scores per State", y = "SAT Scores") +
+      stat_summary(fun.y=mean, geom="point", shape=23, color="black", size=4) +         
+      geom_point(size=3, alpha=0.7, position=position_jitter(w=0.1, h=0)) +
+      stat_summary(fun.y=mean, geom="point", shape=23, color="black", size=4) +         
+      stat_summary(fun.ymin=function(x)(mean(x)-sd(x)), 
+                   fun.ymax=function(x)(mean(x)+sd(x)),
+                   geom="errorbar", width=0.1) +
+      theme_bw()
+  })
+  
+  output$plot2 <- renderPlot({
+    brush = brushOpts(id="plot_brush", delayType = "throttle", delay = 30)
+    bdf=brushedPoints(df7, input$plot_brush)
+    if( !is.null(input$plot_brush) ) {
+      bdf  %>% ggplot() + geom_point(aes(x=State, y=Avg_SAT_Score, color=State, size=4)) + guides(size=FALSE) +
+        labs(title = "Selected Average College SAT Scores", y = "SAT Scores", x = "State")
+    } 
+  })
   ### End scatterplot 2 ###
 })

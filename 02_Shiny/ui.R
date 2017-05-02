@@ -14,7 +14,7 @@ dashboardPage(
       menuItem("Barchart 2", tabName = "demographics", icon = icon("dashboard")),
       menuItem("Histogram", tabName = "histogram", icon = icon("dashboard")),
       menuItem("Scatterplot", tabName = "scatterplot", icon = icon("dashboard")),
-      menuItem("Scatterplot 2", tabName = "scatterplot 2", icon = icon("dashboard")),
+      menuItem("Scatterplot 2", tabName = "action", icon = icon("dashboard")),
       menuItem("Boxplot", tabName = "boxplot", icon = icon("dashboard"))
     )
   ),
@@ -42,7 +42,7 @@ dashboardPage(
       tabItem(tabName = "scatterplot",
         plotlyOutput("scatterplot")),
       # Scatterplot 2 tab content
-      tabItem(tabName = "scatterplot 2",
+      tabItem(tabName = "action",
         plotOutput("plot1",
                          click = "plot_click",
                          dblclick = "plot_dblclick",
