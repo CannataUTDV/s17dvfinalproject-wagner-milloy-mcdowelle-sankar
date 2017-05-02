@@ -17,10 +17,17 @@ Below is a description of our R environment.
 sessionInfo()
 ```
 
+# Our Data
+
+
+The data sets used in this project were government issued data (www.data.gov) and census data retrieved from data.world.
+
+The first data set includes information about every registered higher education institution in the United States (and US territories) from 2003 to 2013. Some of the information relevant to our project includes location (state), average SAT data, demographic information, number of undergraduates, and tuition information. The second data set was taken from the 2010 census data. It includes the population of each state. The third data set, also taken from 2010 census data, includes information on the number of residents over 25, high school graduates, and Bachelors degree holders in each state.
+
+The final dataset was obtained from the Center for Disease Control and is entitled adult_obese in the data.world repository.  The data contains obesity rates as percent of the adult and adolescent populations for all 50 states. It further includes confidence intervals and sample sizes for each state.
+
 # Accessing Our "Dirty" Data From data.world
 
-
-The data we used contains information about all of the higher education institutions in the United States from 2003 to 2013. It includes number of undergraduates, demographics, location, and average ACT and SAT data of matriculants.
 
 The "dirty" version of our data can be accessed from data.world using the following R script.
 
@@ -67,6 +74,11 @@ Once we cleaned up our data, we uploaded a new copy of it to data.world. To impo
 4. Copy your personal data.world API Token into the next field and click "Get Dataset".
 
 5. All csv files in the above dataset will appear on the left-hand side of the screen to be used. 
+
+# Our Shiny Application
+
+
+Our final Shiny application can be accessed at the following address: https://mamilloy.shinyapps.io/final_project/
 
 # Visualizations Using Crosstabs
 
