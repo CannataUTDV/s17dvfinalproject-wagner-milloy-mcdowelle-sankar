@@ -117,3 +117,8 @@ Using Shiny Actions, we also created a series of scatterplots displaying the ave
 ![SAT Scores](../03_Visualizations/ShinyBrush.PNG)
 
 # Visualizations Using Boxplots
+
+This is a box plot that displays the average SAT scores for each school broken down by state. It was created using data from the ‘Clean-Merged-University” data set. We got the data on tableau from using the web connector and connecting through data.world. For the shiny app, we ran a query through data.world. This graphic is interesting because you can see how SAT scores vary across states. In tableau this graphic was created by putting state onto the Columns section, and Average SAT Score onto the rows section. Year was dragged onto color to see which year each score came from. In shiny, it was created using the plot and geom_boxplot functions. 
+
+![Average SAT Scores](../03_Visualizations/boxplot_tableau.png)
+![Average SAT Scores](../03_Visualizations/boxplot_tableau.png)
