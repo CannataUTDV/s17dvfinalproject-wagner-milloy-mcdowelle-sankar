@@ -101,7 +101,7 @@ shinyServer(function(input, output) {
   )
   
   output$scatterplot <- renderPlotly({
-    ggplot(df4, aes(x=prcntObese, y=bachelors/State_Population, color=Abbrv)) +
+    ggplot(df4, aes(x=prcntObese, y=100*(bachelors/State_Population), color=Abbrv)) +
       geom_point() + geom_smooth(se=FALSE, color="black") + ggtitle("Percent State Obesity and Percent of State with Bachelor's Degree ")+ labs(x="% Obese",y="% College Degree")
   })
   
